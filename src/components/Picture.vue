@@ -1,6 +1,6 @@
 <template lang="html">
     <div class="picture">
-        Dibujo
+        <canvas id="canvas"></canvas>
     </div>
 </template>
 
@@ -23,5 +23,11 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    canvas {
+        width: 90%;
+        height: 400px;
+        border: 1px solid get-color('black');
+    }
 }
 </style>
