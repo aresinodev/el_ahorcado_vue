@@ -25,8 +25,8 @@ export default {
     align-items: center;
 
     canvas {
-        width: 90%;
-        height: 400px;
+        width: 50%;
+        height: 300px;
         border: 1px solid get-color('black');
     }
 }
