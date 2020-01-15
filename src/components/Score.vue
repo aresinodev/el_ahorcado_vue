@@ -2,11 +2,11 @@
 <template lang="html">
     <div class="score">
         <div class="score_wins">
-            <span class="text">Victorias: </span>
+            <span class="text">{{ $t('score.wins') }}</span>
             <span class="result">{{ wins }}</span>
         </div>
         <div class="score_defeats">
-            <span class="text">Derrotas: </span>
+            <span class="text">{{ $t('score.defeats') }}</span>
             <span class="result">{{ defeats }}</span>
         </div>
     </div>

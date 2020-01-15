@@ -2,14 +2,14 @@
     <header>
         <div class="title">
             <img class="title_logo" src="../assets/verdugo-logo.png">
-            <h1 class="title_text">El ahorcado</h1>
+            <h1 class="title_text">{{ $t('header.title') }}</h1>
         </div>
 
         <div class="restart">
             <span class="restart_icon">
                 <i class="fas fa-redo-alt"></i>
             </span>
-            <span class="restart_icon_text">Reiniciar</span>
+            <span class="restart_icon_text">{{ $t('header.restart') }}</span>
         </div>
     </header>
 </template>
