@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap');
+
+// Variables de los colores, ejem: $colorName: #hexadecimal
+$primary: #027ec6;
+$white: #ffffff;
+$red: #FF0000;
+$green: #00FF00;
+
+$theme-colors: (
+    'primary': $primary,
+    'white': $white,
+    'red': $red,
+    'green': $green
+);
+
+@function get-color($key: 'primary') {
+    @return map-get($theme-colors, $key);
+}
+
+$font-family-base: 'Open Sans', sans-serif;

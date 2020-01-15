@@ -1,32 +1,30 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
+    <app-header></app-header>
+    <app-score :wins="5" :defeats="10"></app-score>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import Header from '@/components/Header';
+import Score from '@/components/Score';
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+export default {
+  name: 'app',
+  components: {
+    'app-header': Header,
+    'app-score': Score
   }
+}
+</script>
+
+<style lang="scss" scoped>
+@import './styles/_variables.scss';
+
+#app {
+  width: 100vw;
+  height: 100vh;
+  background-color: get-color('white');
+  margin: 0 auto;
 }
 </style>
