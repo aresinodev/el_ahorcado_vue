@@ -15,6 +15,9 @@ export default {
         word: {
             type: String,
             required: true
+        },
+        letterToCheck: {
+            type: String
         }
     },
     data() {
