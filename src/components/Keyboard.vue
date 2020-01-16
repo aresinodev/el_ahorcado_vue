@@ -1,13 +1,13 @@
 <template lang="html">
     <div class="keyboard">
-        <div class="keyboard-key" v-for="(letter, index) in alphabet"
-             :key="index" @click="pressLetter(letter)">{{ letter }}</div>
+        <div :id="'letter-' + key" class="keyboard-key" v-for="(letter, key) in alphabet"
+             :key="key" @click="pressLetter(letter)">{{ letter }}</div>
     </div>
 </template>
 
 <script lang="js">
 export default {
-    name: "keyboard",
+    name: "app-keyboard",
     data() {
         return {
             alphabet: [ "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "Ñ", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" ]

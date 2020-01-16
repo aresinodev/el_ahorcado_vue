@@ -14,7 +14,7 @@
 
 <script>
 export default {
-    name: 'score',
+    name: 'app-score',
     props: {
         wins: {
             type: Number,

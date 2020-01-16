@@ -10,7 +10,7 @@
 
 <script lang="js">
 export default {
-    name: "word",
+    name: "app-word",
     props: {
         word: {
             type: String,

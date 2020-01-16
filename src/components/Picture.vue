@@ -6,7 +6,7 @@
 
 <script lang="js">
 export default {
-    name: 'picture',
+    name: 'app-picture',
     data() {
         return {
 
