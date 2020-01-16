@@ -1,12 +1,16 @@
 <template>
-  <div id="app">
-    <app-header></app-header>
-    <app-score :wins="wins" :defeats="defeats"></app-score>
-    <app-picture></app-picture>
-    <app-word :word="'coche'" :letterToCheck="letter"
-              @letterError="letterError" @rightWord="rightWord"></app-word>
-    <app-keyboard @letterPressed="letterPressed"
-                  :letterToPaint="letterToPaint"></app-keyboard>
+  <div>
+    <app-popup v-if="showPopup"></app-popup>
+
+    <div v-else id="app">
+      <app-header></app-header>
+      <app-score :wins="wins" :defeats="defeats"></app-score>
+      <app-picture></app-picture>
+      <app-word :word="'coche'" :letterToCheck="letter"
+                @letterError="letterError" @rightWord="rightWord"></app-word>
+      <app-keyboard @letterPressed="letterPressed"
+                    :letterToPaint="letterToPaint"></app-keyboard>
+    </div>
   </div>
 </template>
 
@@ -16,6 +20,7 @@ import Score from '@/components/Score';
 import Picture from '@/components/Picture';
 import Word from "@/components/Word";
 import Keyboard from "@/components/Keyboard";
+import InfoPopup from '@/components/InfoPopup';
 
 export default {
   name: "app",
@@ -24,7 +29,8 @@ export default {
     "app-score": Score,
     "app-picture": Picture,
     "app-word": Word,
-    "app-keyboard": Keyboard
+    "app-keyboard": Keyboard,
+    "app-popup": InfoPopup
   },
   data() {
     return {
@@ -32,7 +38,8 @@ export default {
       letterToPaint: '',
       wins: 0,
       defeats: 0,
-      errors: 0
+      errors: 0,
+      showPopup: false
     }
   },
   methods: {
