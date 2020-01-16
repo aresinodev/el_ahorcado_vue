@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <app-header></app-header>
-    <app-score :wins="5" :defeats="10"></app-score>
+    <app-score :wins="wins" :defeats="defeats"></app-score>
     <app-picture></app-picture>
     <app-word :word="'coche'" :letterToCheck="letter"
-              @letterError="letterError"></app-word>
+              @letterError="letterError" @rightWord="rightWord"></app-word>
     <app-keyboard @letterPressed="letterPressed"
                   :letterToPaint="letterToPaint"></app-keyboard>
   </div>
@@ -29,7 +29,10 @@ export default {
   data() {
     return {
       letter: '',
-      letterToPaint: ''
+      letterToPaint: '',
+      wins: 0,
+      defeats: 0,
+      errors: 0
     }
   },
   methods: {
@@ -37,9 +40,26 @@ export default {
       this.letter = value;
     },
     letterError: function (value) {
-      console.log('Error en la letra', value);
-      // TODO: Avisar que pinte parte del muñeco y que ponga de rojo la letra en el teclado.
-      this.letterToPaint = value;
+      this.errors += 1;
+      console.log(this.errors);
+
+      if (this.errors < 9) {
+        // TODO: Avisar que pinte parte del muñeco.
+        this.letterToPaint = value;
+      } else {
+        /* TODO:
+          - Mostramos mensaje de palabra acertada.
+            En este popup, mostramos el mensaje y añadimos un botón para que diga el usuario si quiere otra nueva palabra o finalizar.
+        */
+        this.defeats += 1;
+      }
+    },
+    rightWord: function () {
+      /* TODO:
+          - Mostramos mensaje de palabra acertada.
+            En este popup, mostramos el mensaje y añadimos un botón para que diga el usuario si quiere otra nueva palabra o finalizar.
+      */
+      this.wins += 1;
     }
   }
 }

@@ -39,16 +39,33 @@ export default {
             });
 
             return positionsArray;
+        },
+        wordCorrect: function () {
+            let elements = document.getElementsByClassName('line');
+            let approved = true;
+
+            elements.forEach(item => {
+                if (item.innerHTML === '_') {
+                    approved = false;
+                }
+            });
+
+            return approved;
         }
     },
     watch: {
         letterToCheck: function (value) {
+            console.log('Valor', value);
             let positions = this.letterPositions(value);
 
             if (positions.length > 0) {
                 positions.forEach(position => document.getElementById('letter-' + position).innerHTML = value);
+
+                // TODO: Comprobar si se ha acertado la palabra, si es así, emitir evento que muestre mensaje de acierto.
+                if (this.wordCorrect()) {
+                    this.$emit('rightWord');
+                }
             } else {
-                console.error('No existe la letra ' + value + ' en la palabra ' + this.word);
                 this.$emit('letterError', value);
             }
         }
