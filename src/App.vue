@@ -1,8 +1,9 @@
 <template>
   <div>
-    <app-popup v-if="showPopup"></app-popup>
+    <app-popup v-if="showPopup" :title="title" :subtitle="subtitle"
+               :error="error"></app-popup>
 
-    <div v-else id="app">
+    <div id="app">
       <app-header></app-header>
       <app-score :wins="wins" :defeats="defeats"></app-score>
       <app-picture></app-picture>
@@ -39,7 +40,11 @@ export default {
       wins: 0,
       defeats: 0,
       errors: 0,
-      showPopup: false
+      showPopup: false,
+      error: false,
+      title: '',
+      subtitle: '',
+      wordOfMouth: 'coche'
     }
   },
   methods: {
@@ -58,7 +63,11 @@ export default {
           - Mostramos mensaje de palabra acertada.
             En este popup, mostramos el mensaje y añadimos un botón para que diga el usuario si quiere otra nueva palabra o finalizar.
         */
+        this.title = this.$t('infoPopup.errorTitle');
+        this.subtitle = this.$t('infoPopup.errorSubtitle', { 'word': this.wordOfMouth });
+        this.error = true;
         this.defeats += 1;
+        this.showPopup = true;
       }
     },
     rightWord: function () {
@@ -66,7 +75,11 @@ export default {
           - Mostramos mensaje de palabra acertada.
             En este popup, mostramos el mensaje y añadimos un botón para que diga el usuario si quiere otra nueva palabra o finalizar.
       */
+      this.title = this.$t('infoPopup.correctTitle');
+      this.subtitle = this.$t('infoPopup.correctSubtitle');
+      this.error = false;
       this.wins += 1;
+      this.showPopup = true;
     }
   }
 }
