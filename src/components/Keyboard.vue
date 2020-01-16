@@ -1,6 +1,6 @@
 <template lang="html">
     <div class="keyboard">
-        <div :id="'letter-' + key" class="keyboard-key" v-for="(letter, key) in alphabet"
+        <div :id="'key-' + key" class="keyboard-key" v-for="(letter, key) in alphabet"
              :key="key" @click="pressLetter(letter)">{{ letter }}</div>
     </div>
 </template>
@@ -8,6 +8,11 @@
 <script lang="js">
 export default {
     name: "app-keyboard",
+    props: {
+        letterToPaint: {
+            type: String
+        }
+    },
     data() {
         return {
             alphabet: [ "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "Ñ", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" ]
@@ -15,7 +20,14 @@ export default {
     },
     methods: {
         pressLetter: function (letter) {
-            console.log("Letra pulsada", letter);
+            // TODO: El evento llamará a una función que estará en APP que pasará al componente "Word" la letra seleccionada.
+            this.$emit('letterPressed', letter);
+        }
+    },
+    watch: {
+        letterToPaint: function (value) {
+            let position = this.alphabet.indexOf(value);
+            document.getElementById('key-' + position).style.color = '#FF0000';
         }
     },
 }

@@ -25,7 +25,32 @@ export default {
     },
     computed: {
         wordToArray: function () {
-            return Array.from(this.word);
+            return Array.from(this.word.toUpperCase());
+        }
+    },
+    methods: {
+        letterPositions: function (letter) {
+            let positionsArray = [];
+
+            this.wordToArray.forEach((item, index) => {
+                if (item === letter) {
+                    positionsArray.push(index);
+                }
+            });
+
+            return positionsArray;
+        }
+    },
+    watch: {
+        letterToCheck: function (value) {
+            let positions = this.letterPositions(value);
+
+            if (positions.length > 0) {
+                positions.forEach(position => document.getElementById('letter-' + position).innerHTML = value);
+            } else {
+                console.error('No existe la letra ' + value + ' en la palabra ' + this.word);
+                this.$emit('letterError', value);
+            }
         }
     },
 }

@@ -3,8 +3,10 @@
     <app-header></app-header>
     <app-score :wins="5" :defeats="10"></app-score>
     <app-picture></app-picture>
-    <app-word :word="'coche'"></app-word>
-    <app-keyboard></app-keyboard>
+    <app-word :word="'coche'" :letterToCheck="letter"
+              @letterError="letterError"></app-word>
+    <app-keyboard @letterPressed="letterPressed"
+                  :letterToPaint="letterToPaint"></app-keyboard>
   </div>
 </template>
 
@@ -23,6 +25,22 @@ export default {
     "app-picture": Picture,
     "app-word": Word,
     "app-keyboard": Keyboard
+  },
+  data() {
+    return {
+      letter: '',
+      letterToPaint: ''
+    }
+  },
+  methods: {
+    letterPressed: function (value) {
+      this.letter = value;
+    },
+    letterError: function (value) {
+      console.log('Error en la letra', value);
+      // TODO: Avisar que pinte parte del muñeco y que ponga de rojo la letra en el teclado.
+      this.letterToPaint = value;
+    }
   }
 }
 </script>
