@@ -39,75 +39,75 @@ export default {
     },
     data() {
         return {
-            
+
         }
     },
 }
 </script>
 
 <style lang="scss" scoped>
-    @import '../styles/_variables.scss';
+@import "../styles/_variables.scss";
 
-    .popup-container {
-        width: 100vw;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background: rgba(0, 0, 0, 0.6);
-        position: fixed;
-        z-index: 9999;
+.popup-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  z-index: 9999;
 
-        .content {
-            width: 90%;
-            height: 30%;
-            border-radius: 15px;
-            background-color: get-color("white");
+  .content {
+    width: 90%;
+    height: 28%;
+    border-radius: 15px;
+    background-color: get-color("white");
 
-            &-title {
-                width: 100%;
-                text-align: center;
-                font-weight: bold;
-                font-size: 1.5em;
-                padding-top: .5em;
-                padding-bottom: .5em;
-                border-bottom: 1px solid get-color("black");
-            }
-
-            &-subtitle {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                align-items: center;
-                padding-top: 1em;
-
-                .text {
-                    width: 100%;
-                    text-align: center;
-                    font-size: 2em;
-                }
-
-                .actions {
-                    width: 100%;
-                    display: flex;
-                    justify-content: space-evenly;
-                    align-items: center;
-                    margin-top: 1em;
-
-                    button {
-                        border: 5px dashed get-color("black");
-                        background-color: get-color("white");
-                        color: get-color("black");
-                        text-transform: uppercase;
-                        font-weight: bold;
-                        font-size: 1.7em;
-                        height: 70px;
-                        cursor: pointer;
-                        outline: none;
-                    }
-                }
-            }
-        }
+    &-title {
+      width: 100%;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.5em;
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+      border-bottom: 1px solid get-color("black");
     }
+
+    &-subtitle {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1em;
+
+      .text {
+        width: 100%;
+        text-align: center;
+        font-size: 1.8em;
+      }
+
+      .actions {
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        margin-top: 1em;
+
+        button {
+          border: 5px dashed get-color("black");
+          background-color: get-color("white");
+          color: get-color("black");
+          text-transform: uppercase;
+          font-weight: bold;
+          font-size: 1.7em;
+          height: 70px;
+          cursor: pointer;
+          outline: none;
+        }
+      }
+    }
+  }
+}
 </style>

@@ -17,7 +17,7 @@ const messages = {
       correctTitle: "Palabra acertada",
       errorTitle: "Palabra errónea",
       correctSubtitle: "¡¡Enhorabuena!! Ha acertado la palabra.",
-      errorSubtitle: "¡¡Oh, lo siento!! No ha acertado la palabra. La palabra era { word }.",
+      errorSubtitle: "¡¡Oh, lo siento!! No ha acertado la palabra. La palabra era {0}.",
       finish: "Finalizar",
       newWord: "Nueva palabra",
       newGame: "Nueva partida"

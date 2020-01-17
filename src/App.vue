@@ -59,22 +59,14 @@ export default {
         // TODO: Avisar que pinte parte del muñeco.
         this.letterToPaint = value;
       } else {
-        /* TODO:
-          - Mostramos mensaje de palabra acertada.
-            En este popup, mostramos el mensaje y añadimos un botón para que diga el usuario si quiere otra nueva palabra o finalizar.
-        */
         this.title = this.$t('infoPopup.errorTitle');
-        this.subtitle = this.$t('infoPopup.errorSubtitle', { 'word': this.wordOfMouth });
+        this.subtitle = this.$t('infoPopup.errorSubtitle', [this.wordOfMouth]);
         this.error = true;
         this.defeats += 1;
         this.showPopup = true;
       }
     },
     rightWord: function () {
-      /* TODO:
-          - Mostramos mensaje de palabra acertada.
-            En este popup, mostramos el mensaje y añadimos un botón para que diga el usuario si quiere otra nueva palabra o finalizar.
-      */
       this.title = this.$t('infoPopup.correctTitle');
       this.subtitle = this.$t('infoPopup.correctSubtitle');
       this.error = false;
