@@ -11,7 +11,67 @@ export default {
         return {
 
         }
-    }
+    },
+    methods: {
+        drawDoll: function (piece) {
+            let canvas = document.getElementById("canvas");
+            let ctx = canvas.getContext("2d");
+
+            switch (piece) {
+                case 1:
+                    ctx.beginPath();
+                    ctx.moveTo(0, 10);
+                    ctx.lineTo(30, 10);
+                    ctx.lineWidth = 3;
+                    ctx.stroke();
+
+                    break;
+
+                case 2:
+                    ctx.beginPath();
+                    ctx.moveTo(30, 9);
+                    ctx.lineTo(30, 25);
+                    ctx.lineWidth = 3;
+                    ctx.stroke();
+
+                    break;
+
+                case 3:
+                    ctx.beginPath();
+                    ctx.fillStyle = "transparent";
+                    ctx.lineWidth = 3;
+                    ctx.arc(30,34,8,0,2*Math.PI);
+                    ctx.fill();
+                    ctx.stroke();
+
+                    break;
+
+                case 4:
+
+                    break;
+
+                case 5:
+
+                    break;
+
+                case 6:
+
+                    break;
+
+                case 7:
+
+                    break;
+
+                case 8:
+
+                    break;
+
+                case 9:
+
+                    break;
+            }
+        }
+    },
 }
 </script>
 
