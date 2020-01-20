@@ -47,6 +47,11 @@ export default {
                     break;
 
                 case 4:
+                    ctx.beginPath();
+                    ctx.moveTo(30, 40);
+                    ctx.lineTo(30, 80);
+                    ctx.lineWidth = 3;
+                    ctx.stroke();
 
                     break;
 
@@ -55,6 +60,11 @@ export default {
                     break;
 
                 case 6:
+                    ctx.beginPath();
+                    ctx.moveTo(30, 50);
+                    ctx.lineTo(45, 60);
+                    ctx.lineWidth = 3;
+                    ctx.stroke();
 
                     break;
 
