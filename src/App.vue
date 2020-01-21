@@ -1,5 +1,6 @@
 <template>
 	<div>
+		<app-init v-if="showInit" @beginGame="beginGame"></app-init>
 		<app-popup v-if="showPopup" :title="title" :subtitle="subtitle" :error="error"></app-popup>
 
 		<div id="app">
@@ -19,6 +20,9 @@ import Picture from "@/components/Picture";
 import Word from "@/components/Word";
 import Keyboard from "@/components/Keyboard";
 import InfoPopup from "@/components/InfoPopup";
+import Init from "@/components/Init";
+
+import words from "./words";
 
 export default {
 	name: "app",
@@ -28,7 +32,8 @@ export default {
 		"app-picture": Picture,
 		"app-word": Word,
 		"app-keyboard": Keyboard,
-		"app-popup": InfoPopup
+		"app-popup": InfoPopup,
+		"app-init": Init
 	},
 	data() {
 		return {
@@ -38,11 +43,13 @@ export default {
 			defeats: 0,
 			errors: 0,
 			showPopup: false,
+			showInit: false,
 			error: false,
 			title: "",
 			subtitle: "",
 			wordOfMouth: "coche",
-			errorNumber: 0
+			errorNumber: 0,
+			words: null
 		};
 	},
 	methods: {
@@ -69,7 +76,14 @@ export default {
 			this.error = false;
 			this.wins += 1;
 			this.showPopup = true;
+		},
+		beginGame: function() {
+			// TODO: Reseteamos variables, obtenemos la palabra y ocultamos la pantalla de inicio.
 		}
+	},
+	created() {
+		this.words = words.words;
+		this.showInit = true;
 	}
 };
 </script>

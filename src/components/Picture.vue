@@ -21,6 +21,10 @@ export default {
 				let ctx = canvas.getContext("2d");
 
 				switch (piece) {
+					case 0:
+						ctx.clearRect(0, 0, canvas.width, canvas.height);
+						break;
+
 					case 1:
 						// Línea 1
 						ctx.beginPath();

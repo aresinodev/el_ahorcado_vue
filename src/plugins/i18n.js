@@ -21,7 +21,11 @@ const messages = {
       finish: "Finalizar",
       newWord: "Nueva palabra",
       newGame: "Nueva partida"
-    }
+		},
+		init: {
+			title: "El ahorcado",
+			play: "Jugar"
+		}
   },
   en: {
     header: {

@@ -1,48 +1,57 @@
 <template lang="html">
-    <div class="popup-container">
-        <div class="content">
-            <div class="content-title">
-                {{ title.toUpperCase() }}
-            </div>
-            <div class="content-subtitle">
-                <span class="text">{{ subtitle }}</span>
-                <div class="actions">
-                    <button v-if="!error" type="button">{{ $t("infoPopup.newWord") }}</button>
-                    <button v-else type="button">{{ $t("infoPopup.newGame") }}</button>
-                    <button type="button">{{ $t("infoPopup.finish") }}</button>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="popup-container">
+		<div class="content">
+			<div class="content-title">
+				{{ title.toUpperCase() }}
+			</div>
+			<div class="content-subtitle">
+				<span class="text">{{ subtitle }}</span>
+				<div class="actions">
+					<button v-if="!error" type="button" @click="newWord()">{{ $t("infoPopup.newWord") }}</button>
+					<button v-else type="button" @click="newGame()">{{ $t("infoPopup.newGame") }}</button>
+					<button type="button" @click="finishGame()">{{ $t("infoPopup.finish") }}</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script lang="js">
 export default {
-    name: 'InfoPopup',
-    props: {
-        title: {
-            type: String,
-            required: true
-        },
-        subtitle: {
-            type: String,
-            required: true
-        },
-        error: {
-            type: Boolean,
-            required: true
-        },
-        wordOfMouth: {
-            type: String,
-            required: false
-        }
-    },
-    data() {
-        return {
-
-        }
-    },
-}
+	name: "InfoPopup",
+	props: {
+		title: {
+			type: String,
+			required: true
+		},
+		subtitle: {
+			type: String,
+			required: true
+		},
+		error: {
+			type: Boolean,
+			required: true
+		},
+		wordOfMouth: {
+			type: String,
+			required: false
+		}
+	},
+	data() {
+			return {}
+	},
+	methods: {
+		newWord: function() {
+			// TODO: Emitir evento que genera una nueva palabra para adivinar.
+		},
+		newGame: function() {
+			// TODO: Emitir evento que genera una nueva palabra y reinicia todas las variables como si empezara una nueva partida.
+		},
+		finishGame: function() {
+			// TODO: Emitir evento que reinicia todo y mostrará la pantalla emergente de comienzo de la partida.
+		}
+	},
+};
 </script>
 
 <style lang="scss" scoped>
