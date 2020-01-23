@@ -20,14 +20,23 @@ export default {
     },
     methods: {
         pressLetter: function (letter) {
-            // TODO: El evento llamará a una función que estará en APP que pasará al componente "Word" la letra seleccionada.
-            this.$emit('letterPressed', letter);
-        }
+					// El evento llamará a una función que estará en APP que pasará al componente "Word" la letra seleccionada.
+          this.$emit('letterPressed', letter);
+				},
+				clearKeyboard: function() {
+					for (let i = 0; i < this.alphabet.length; i++) {
+						document.getElementById('key-' + i).style.color = '#000000';
+					}
+				}
     },
     watch: {
         letterToPaint: function (value) {
-            let position = this.alphabet.indexOf(value);
+					if (value !== "") {
+						let position = this.alphabet.indexOf(value);
             document.getElementById('key-' + position).style.color = '#FF0000';
+					} else {
+						this.clearKeyboard();
+					}
         }
     },
 }

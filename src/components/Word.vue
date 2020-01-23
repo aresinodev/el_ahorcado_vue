@@ -55,7 +55,6 @@ export default {
     },
     watch: {
         letterToCheck: function (value) {
-            console.log('Valor', value);
             let positions = this.letterPositions(value);
 
             if (positions.length > 0) {
@@ -68,7 +67,7 @@ export default {
             } else {
                 this.$emit('letterError', value);
             }
-        }
+				}
     },
 }
 </script>

@@ -43,12 +43,15 @@ export default {
 	methods: {
 		newWord: function() {
 			// TODO: Emitir evento que genera una nueva palabra para adivinar.
+			this.$emit("newWord");
 		},
 		newGame: function() {
 			// TODO: Emitir evento que genera una nueva palabra y reinicia todas las variables como si empezara una nueva partida.
+			this.$emit("newGame");
 		},
 		finishGame: function() {
 			// TODO: Emitir evento que reinicia todo y mostrará la pantalla emergente de comienzo de la partida.
+			this.$emit("initGame");
 		}
 	},
 };

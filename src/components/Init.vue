@@ -1,7 +1,7 @@
 <template lang="html">
 	<div class="init-container">
 		<span class="title">{{ $t("init.title") }}</span>
-		<button class="play" type="button">{{ $t("init.play") }}</button>
+		<button class="play" type="button" @click="beginGame()">{{ $t("init.play") }}</button>
 	</div>
 </template>
 

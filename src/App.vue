@@ -1,13 +1,13 @@
 <template>
 	<div>
 		<app-init v-if="showInit" @beginGame="beginGame"></app-init>
-		<app-popup v-if="showPopup" :title="title" :subtitle="subtitle" :error="error"></app-popup>
+		<app-popup v-if="showPopup" :title="title" :subtitle="subtitle" :error="error" @newWord="newWord" @newGame="beginGame" @initGame="initGame"></app-popup>
 
 		<div id="app">
-			<app-header></app-header>
+			<app-header @restartGame="beginGame"></app-header>
 			<app-score :wins="wins" :defeats="defeats"></app-score>
 			<app-picture :error="errors"></app-picture>
-			<app-word :word="'coche'" :letterToCheck="letter" @letterError="letterError" @rightWord="rightWord"></app-word>
+			<app-word :word="wordOfMouth" :letterToCheck="letter" @letterError="letterError" @rightWord="rightWord"></app-word>
 			<app-keyboard @letterPressed="letterPressed" :letterToPaint="letterToPaint"></app-keyboard>
 		</div>
 	</div>
@@ -23,6 +23,8 @@ import InfoPopup from "@/components/InfoPopup";
 import Init from "@/components/Init";
 
 import words from "./words";
+
+import utils from "./utils";
 
 export default {
 	name: "app",
@@ -47,7 +49,7 @@ export default {
 			error: false,
 			title: "",
 			subtitle: "",
-			wordOfMouth: "coche",
+			wordOfMouth: "",
 			errorNumber: 0,
 			words: null
 		};
@@ -58,7 +60,6 @@ export default {
 		},
 		letterError: function(value) {
 			this.errors += 1;
-			console.log(this.errors);
 
 			if (this.errors < 9) {
 				this.letterToPaint = value;
@@ -79,10 +80,45 @@ export default {
 		},
 		beginGame: function() {
 			// TODO: Reseteamos variables, obtenemos la palabra y ocultamos la pantalla de inicio.
+			this.reset();
+			this.words = words.words;
+			this.wordOfMouth = this.getWordOfMouth();
+			this.showInit = false;
+		},
+		reset: function() {
+			this.showInit = false;
+			this.letter = "";
+			this.letterToPaint = "";
+			this.wins = 0;
+			this.defeats = 0;
+			this.errors = 0;
+			this.showPopup = false;
+			this.error = false;
+			this.title = "";
+			this.subtitle = "";
+			this.errorNumber = 0;
+			this.words = null;
+		},
+		getWordOfMouth: function() {
+			let random = utils.getRandomArbitrary(0, this.words.length);
+			return this.words[random];
+		},
+		newWord: function() {
+			this.showPopup = false;
+			this.letter = "";
+			this.letterToPaint = "";
+			this.errors = 0;
+			this.error = false;
+			this.errorNumber = 0;
+			this.wordOfMouth = this.getWordOfMouth();
+		},
+		initGame: function() {
+			this.reset();
+			this.showInit = true;
 		}
 	},
 	created() {
-		this.words = words.words;
+		this.reset();
 		this.showInit = true;
 	}
 };

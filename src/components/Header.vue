@@ -5,7 +5,7 @@
             <h1 class="title_text">{{ $t('header.title') }}</h1>
         </div>
 
-        <div class="restart">
+        <div class="restart" @click="restartGame()">
             <span class="restart_icon">
                 <i class="fas fa-redo-alt"></i>
             </span>
@@ -16,7 +16,12 @@
 
 <script lang="js">
     export default {
-        name: 'app-header'
+				name: 'app-header',
+				methods: {
+					restartGame: function() {
+						this.$emit("restartGame");
+					}
+				},
     }
 </script>
 
