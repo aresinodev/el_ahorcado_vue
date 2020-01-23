@@ -48,10 +48,10 @@ export default {
 .keyboard {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     margin-top: 1em;
-    padding-left: 2em;
+    padding-left: 1em;
 
     &-key {
         width: 2em;

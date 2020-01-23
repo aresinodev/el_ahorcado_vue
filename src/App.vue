@@ -79,7 +79,6 @@ export default {
 			this.showPopup = true;
 		},
 		beginGame: function() {
-			// TODO: Reseteamos variables, obtenemos la palabra y ocultamos la pantalla de inicio.
 			this.reset();
 			this.words = words.words;
 			this.wordOfMouth = this.getWordOfMouth();
@@ -96,6 +95,7 @@ export default {
 			this.error = false;
 			this.title = "";
 			this.subtitle = "";
+			this.wordOfMouth = "";
 			this.errorNumber = 0;
 			this.words = null;
 		},

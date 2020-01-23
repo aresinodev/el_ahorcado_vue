@@ -1,10 +1,6 @@
 <template lang="html">
     <div class="word-container">
-        <div class="word-container-content">
-            <span :id="'letter-' + key" class="line"
-                  v-for="(item, key) in wordToArray"
-                  :key="key">_</span>
-        </div>
+        <div class="word-container-content"></div>
     </div>
 </template>
 
@@ -21,18 +17,15 @@ export default {
         }
     },
     data() {
-        return {}
-    },
-    computed: {
-        wordToArray: function () {
-            return Array.from(this.word.toUpperCase());
-        }
+        return {
+            wordInArray: []
+				}
     },
     methods: {
         letterPositions: function (letter) {
             let positionsArray = [];
 
-            this.wordToArray.forEach((item, index) => {
+            this.wordInArray.forEach((item, index) => {
                 if (item === letter) {
                     positionsArray.push(index);
                 }
@@ -51,24 +44,38 @@ export default {
             });
 
             return approved;
+        },
+				addWordIntoShape: function () {
+						let content = document.getElementsByClassName("word-container-content")[0];
+						let contentHTML = "";
+						for (let i = 0; i < this.wordInArray.length; i++) {
+						    contentHTML += `<span id="letter-${ i }" class="line" key="${ i }">_</span>`;
+						}
+						content.innerHTML = contentHTML;
         }
     },
     watch: {
         letterToCheck: function (value) {
-            let positions = this.letterPositions(value);
+            if (value !== "") {
+                let positions = this.letterPositions(value);
 
-            if (positions.length > 0) {
-                positions.forEach(position => document.getElementById('letter-' + position).innerHTML = value);
+                if (positions.length > 0) {
+                    positions.forEach(position => document.getElementById('letter-' + position).innerHTML = value);
 
-                // TODO: Comprobar si se ha acertado la palabra, si es así, emitir evento que muestre mensaje de acierto.
-                if (this.wordCorrect()) {
-                    this.$emit('rightWord');
+                    if (this.wordCorrect()) {
+                        this.$emit('rightWord');
+                    }
+                } else {
+                    this.$emit('letterError', value);
                 }
-            } else {
-                this.$emit('letterError', value);
             }
-				}
-    },
+				},
+				word: function (value) {
+            document.getElementsByClassName("word-container-content")[0].innerHTML = "";
+						this.wordInArray = Array.from(value.toUpperCase());
+						this.addWordIntoShape();
+        }
+    }
 }
 </script>
 
